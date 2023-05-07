@@ -24,5 +24,25 @@ namespace WpfCrashCourse
         {
             InitializeComponent();
         }
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.RightPanel.Background = this.Resources["RightPanelBrash"] as Brush;
+        }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("A crash course in WPF", "Hello", MessageBoxButton.OK, MessageBoxImage.Information) ;
+        }
+
+        private void Exit_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Exit_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
     }
 }

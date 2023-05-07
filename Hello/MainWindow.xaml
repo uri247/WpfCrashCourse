@@ -6,29 +6,50 @@
         xmlns:local="clr-namespace:WpfCrashCourse"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="48" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="96" />
-        </Grid.RowDefinitions>
+    <Window.Resources>
+        <LinearGradientBrush x:Key="LeftPanelBrash"  StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Yellow" Offset="0.0" />
+            <GradientStop Color="Orange" Offset="0.25" />
+            <GradientStop Color="Maroon" Offset="1" />
+        </LinearGradientBrush>
+        <RadialGradientBrush x:Key="RightPanelBrash" GradientOrigin="0.75, 0.25" RadiusX="0.75" RadiusY="0.75">
+            <GradientStop Color="Yellow" Offset="0" />
+            <GradientStop Color="Red" Offset="0.25" />
+            <GradientStop Color="Blue" Offset="0.5" />
+            <GradientStop Color="LimeGreen" Offset="1" />
+        </RadialGradientBrush>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close" Executed="Exit_Executed" CanExecute="Exit_CanExecute" />
+    </Window.CommandBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="E_xit" Command="ApplicationCommands.Close" />
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About Hello" Click="About_Click" />
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="96" />
+            </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="0" Grid.Column="1" Fill="Azure" />
-        <Rectangle Grid.Row="1" Grid.Column="0">
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="Yellow" Offset="0.0" />
-                    <GradientStop Color="Orange" Offset="0.25" />
-                    <GradientStop Color="Maroon" Offset="1" />
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-
-        <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Fill="ForestGreen" />
-    </Grid>
+            <Canvas Grid.Row="0" Grid.Column="1" Background="Azure" />
+            <Canvas Grid.Row="1" Grid.Column="0" Background="{StaticResource LeftPanelBrash}" />
+            <Canvas Grid.Row="1" Grid.Column="1">
+                <Button x:Name="StartButton" Click="StartButton_Click">Start</Button>
+            </Canvas>
+            <Canvas Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Background="ForestGreen" />
+            <Canvas x:Name="RightPanel" Grid.Row="1" Grid.Column="2" />
+        </Grid>
+    </DockPanel>
 </Window>
