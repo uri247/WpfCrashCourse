@@ -1,0 +1,52 @@
+﻿<Grid
+    x:Class="Hello.LoglevelPane"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Hello"
+    mc:Ignorable="d"
+    d:DesignWidth ="480"
+    >
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="2*" />
+        <ColumnDefinition Width="3*" />
+    </Grid.ColumnDefinitions>
+
+    <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+        <GroupBox Header="Service log level control">
+            <CheckBox>Adaptive log levels</CheckBox>
+        </GroupBox>
+        <GroupBox Header="Service logs" />
+    </StackPanel>
+
+    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+        <GroupBox Header="Service master switch">
+            <StackPanel>
+                <local:LogLevelChoice Label="LogLevelFile" />
+                <local:LogLevelChoice Label="LegLevelODS" />
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Service log file parameters">
+            <StackPanel>
+                <local:LabeledTextbox Label="MaxLogFileSize (Bytes)" />
+                <local:LabeledTextbox Label="MaxLogFilesNumber" />
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="GUI logs">
+        </GroupBox>
+        <Grid Height="72">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Content="Save"/>
+            <Button Grid.Row="0" Grid.Column="1" Content="Set Default Levels"/>
+            <Button Grid.Row="1" Grid.Column="0" Content="Enable crash logging" Grid.ColumnSpan="2" />
+        </Grid>
+    </StackPanel>
+</Grid>

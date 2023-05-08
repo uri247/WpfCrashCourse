@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfCrashCourse
+namespace Hello
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
